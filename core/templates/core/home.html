@@ -1,0 +1,70 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block hero %}
+    <sectionc class="bg-gradient-to-b from-orange-100 via-orange-50 to-white">
+        <div class="container mx-auto px-24 py-16 flex flex-col lg:flex-row items-center">
+            <div class="lg:w-1/2">
+                <h1 class="text-3xl lg:text-4xl font-bold text-gray-800">Enjoy Delecious</h1>
+                <h1 class="text-4xl lg:text-5xl font-bold text-orange-500 pt-5">Traditional Food</h1>
+                <p class="mt-4 text-gray-600">Good food warms the heart and mends the soul</p>
+                <a href="" class="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-full">
+                    Order Now ->
+                </a>
+            </div>
+            <div class="lg:w-1/2 mt-10 lg:mt-0 flex justify-center">
+                    <img src="{% static 'core/images/cooked-food.jpg' %}" alt="food" class="w-3/4">
+            </div>
+        </div>
+    </sectionc>
+{% endblock hero %}
+
+{% block maincontent %}
+    {% comment %} FOOD SECTION {% endcomment %}
+    <section class="bg-gradient-to-t from-orange-100 via-orange-50 to-white">
+        <div class="container mx-auto px-24 py-16">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Popular Dishes</h2>
+
+            <div class="grid grid-col-1 md:grid-cols-3 gap-8">
+                {% comment %} Dish data comming from view function {% endcomment %}
+                {% for dish_key, dish_data in Dishes.items %}
+                <div class="bg-gradient-to-b from-orange-100 via-orange-50 to-white shadow-md p-6 hover:shadow-xl transition-shadow duration-300">
+                    <img src="{{dish_data.img}}" alt="food" class="w-full h-48 object-cover">
+                    <h3 class="text-2xl font-semibold text-gray-800 mt-4">{{dish_data.title}}</h3>
+                    <p class="text-gray-600 mt-2 m-1">{{dish_data.desc}}.</p>
+                    <a href="" class="inline-block bg-orange-500 text-white mt-4 mb-1 px-2 py-2 rounded-full hover:bg-orange-600">Order Now</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    {% comment %} ABOUT US Section {% endcomment %}
+    <section class="bg-gradient-to-b from-orange-100 via-orange-50 to-white">
+        <div class="container mx-auto px-6 py-16">
+
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-gray-800">About Us</h2>
+                <p class="mt-4 text-gray-600">We provide fresh and healthy food.</p>
+            </div>
+
+            <div class="flex justify-center mt-10">
+                <img src="{% static 'core/images/About_Us.jpg' %}" alt="pasta" class="w-2/6 rounded-lg shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    {% comment %} Chef Note {% endcomment %}
+    <section class="bg-white py-10 px-6">
+        <div class="max-w-4xl mx-auto bg-orange-50 p-6 rounded-lg shadow-lg">
+            <p class="text-gray-800 text-xl font-light italic">
+                Dear Guest,<br><br>
+                Welcome to Bangla Hotel! We are delighted to have you here and hope you enjoy your dining experience with us. Our chefs take great pride in preparing delicious and authentic Bangladeshi cuisine using the freshest ingredients. Whether you're a fan of spicy curries, flavorful biryanis, or traditional sweets, we have something to satisfy every palate. If you have any dietary preferences or special requests, please don't hesitate to let our staff know. We are here to ensure that your meal is not only tasty but also memorable. Thank you for choosing Bangla Hotel, and we look forward to serving you again soon!<br><br>
+                <span class="text-orange-500 font-medium" style="font-family:cursive">Chef, Nazmul Haque Sagor</span>
+            </p>
+        </div>
+    </section>
+{% endblock maincontent %}
+
